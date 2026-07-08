@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class VeterinariaApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(VeterinariaApiApplication.class, args);
+		SpringApplication.run(
+			VeterinariaApiApplication.class,
+			args
+		);
 	}
-
 }
