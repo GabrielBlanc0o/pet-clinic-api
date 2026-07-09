@@ -13,6 +13,6 @@ public class Mascota {
 
     private Double peso;
     
-    private String sexo;
+    private String sexo; 
 
 }
