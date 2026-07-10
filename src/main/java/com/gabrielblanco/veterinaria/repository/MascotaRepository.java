@@ -12,13 +12,27 @@ public class MascotaRepository {
         mascotas = new ArrayList<>();
     }
 
-    public Mascota guardar (Mascota mascota) {
-        return mascota;
+    public void guardar (Mascota mascota) {
+       mascotas.add(mascota);
     }
     
+    public Mascota buscarPorId (String id) {
+        for (Mascota mascota : mascotas) {
+            if (id.equals(mascota.getId())){
+                return mascota;
+            } 
+        }
+        return null;
+    }
+
+    public void eliminar (String id) { 
     
-    //Mascota mascota1 = new Mascota("101","Firulais",67.5,Mascota(2010,07,05),Mascota.EstadoMascota.ACTIVA);
-    
+        for (Mascota mascota : mascotas) {
+            if (id.equals(mascota.getId())){
+                mascotas.remove(mascota);
+            } 
+        }    
+    }
 }
 
 /*
