@@ -1,6 +1,8 @@
 package com.gabrielblanco.veterinaria.repository;
 
 import java.util.ArrayList;
+import java.util.List;
+
 
 import com.gabrielblanco.veterinaria.model.Mascota;
 
@@ -25,39 +27,26 @@ public class MascotaRepository {
         return null;
     }
 
-    public void eliminar (String id) { 
-    
-        for (Mascota mascota : mascotas) {
-            if (id.equals(mascota.getId())){
-                mascotas.remove(mascota);
-            } 
-        }    
+    public void eliminar(String id) { 
+        mascotas.removeIf(mascota -> mascota.getId().equals(id));
     }
-}
 
-/*
+    public List<Mascota> buscarTodas() {
+        return new ArrayList<>(mascotas);
+    }
 
-Luego implementa, uno por uno, estos métodos:
-guardar(Mascota mascota)
+    public void actualizar(Mascota mascota) {
+        var res = buscarPorId(mascota.getId());
+        if (res == null) {
+            return;
+            } 
+            res.setNombre(mascota.getNombre());
+            res.setPeso(mascota.getPeso());
+            res.setFechaNacimiento(mascota.getFechaNacimiento());
+            res.setEstado(mascota.getEstado());
+        }
+} 
 
-buscarPorId(String id)
+    
 
-buscarTodas()
 
-eliminar(String id)
-
-actualizar(Mascota mascota)
-
-Pero no hagas los cinco de una vez.
-
-Haz primero guardar() y me lo muestras.
-
-Quiero revisar cómo razonas:
-
-¿Dónde verificas si el ID ya existe?
-¿El Repository o el Service?
-¿Qué devuelve el método?
-¿Qué pasa si intentan guardar una mascota repetida?
-
-Esas decisiones son más importantes que la sintaxis.
-*/
