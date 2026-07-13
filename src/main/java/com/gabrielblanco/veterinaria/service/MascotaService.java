@@ -21,46 +21,42 @@ public class MascotaService {
         }
     }
 
-    private void validarMascota(Mascota mascota) {
-        if (mascota == null) {
+    private void validarMascotaExiste(String id) {
+        if (obtenerMascota(id) == null) {
             throw new IllegalArgumentException(
                 "La mascota no puede ser null."
             );
-        } else {
-            System.out.println("La mascota con id " + mascota.getId() + " si existe.");
-        }
+        } 
     }
-    public Mascota buscarMascotaPorId(String id) {
 
+    private void validarMascotaNoExiste(String id) {
+        if (obtenerMascota(id) != null) {
+            throw new IllegalArgumentException(
+                "Error"
+            );
+        } 
+    }
+
+    public Mascota buscarMascotaPorId(String id) {
         validarId(id);
+        validarMascotaExiste(id);
         Mascota mascota = obtenerMascota(id);
-        validarMascota(mascota);
         return mascota;
     }
     
     public void registrarMascota(Mascota mascota) {
-        
-        Mascota verificar = obtenerMascota(mascota.getId());
-        validarMascota(verificar);
+        validarMascotaExiste(mascota.getId());
         repository.guardar(mascota);
     }
 
     public void actualizarMascota(Mascota mascota) {
-        validarMascota(mascota);
-        Mascota verificar = obtenerMascota(mascota.getId());
-        if (verificar != null) {
-            repository.actualizar(mascota);
-        } else {
-            throw new IllegalArgumentException(
-                "No existe una mascota con el id: " + mascota.getId()
-            );
-        }
+        validarMascotaNoExiste(mascota.getId());
+        repository.actualizar(mascota);
     }
 
     public void eliminarMascota(String id) {
         validarId(id);
-        Mascota verificar = obtenerMascota(id);
-        validarMascota(verificar);
+        validarMascotaNoExiste(id);
         repository.eliminar(id);
     }
 }
