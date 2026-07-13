@@ -3,7 +3,6 @@ package com.gabrielblanco.veterinaria.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import com.gabrielblanco.veterinaria.model.Mascota;
 
 public class MascotaRepository {
@@ -39,7 +38,7 @@ public class MascotaRepository {
         var res = buscarPorId(mascota.getId());
         if (res == null) {
             return;
-            } 
+        } 
             res.setNombre(mascota.getNombre());
             res.setPeso(mascota.getPeso());
             res.setFechaNacimiento(mascota.getFechaNacimiento());
