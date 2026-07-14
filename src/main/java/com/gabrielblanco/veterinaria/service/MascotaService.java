@@ -60,3 +60,11 @@ public class MascotaService {
         repository.eliminar(id);
     }
 }
+
+/*ejm 
+Fabrica fabrica = new Fabrica();
+
+MascotaService mascota = fabrica.crearMascotaService();
+ClienteService cliente = fabrica.crearClienteService();
+ProductoService producto = fabrica.crearProductoService();
+ */ 
