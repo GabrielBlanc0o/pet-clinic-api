@@ -25,12 +25,11 @@ public class Mascota {
     }
 
     private void validarEstado(EstadoMascota estado){
-
-    if(estado == null){
-        throw new IllegalArgumentException("Debe indicar un estado.");
+        if(estado == null){
+            throw new IllegalArgumentException("Debe indicar un estado.");
+        }
     }
 
-    }
     private void pesoVerificacion(Double peso) {
         if (peso == null || peso <= 0.0) {
             throw new IllegalArgumentException("El peso no puede ser 0 o menor a 0.");
@@ -38,7 +37,6 @@ public class Mascota {
     }
 
     private void validarFechaNacimiento(LocalDate fechaNacimiento) {
-        
         LocalDate fechaActual = LocalDate.now();
         //IMPORTANTE para sacar los años de un String luego de su Parse !!
         int edadFormat = Period.between(fechaNacimiento, fechaActual).getYears();
@@ -96,6 +94,7 @@ public class Mascota {
     }
 
     public void setEstado(EstadoMascota estado) {
+        validarEstado(estado);
         this.estado = estado;
     }
     public EstadoMascota getEstado() {
@@ -104,10 +103,10 @@ public class Mascota {
 
     @Override
     public String toString() {
-        return id.concat(" Nombre: " + getNombre() + "\n"
+        return "Id: " + id +" Nombre: " + getNombre() + "\n"
                         +" Peso: " + getPeso() + "\n"
                         +" Fecha nacimiento: " + getFechaNacimiento() + "\n"
-                        + "Estado actual: " + getEstado()  );
+                        + "Estado actual: " + getEstado();
     }
 
 }
