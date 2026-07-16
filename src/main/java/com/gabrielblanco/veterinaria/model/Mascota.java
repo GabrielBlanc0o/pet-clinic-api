@@ -23,19 +23,16 @@ public class Mascota {
             throw new IllegalArgumentException("Ingrese un nombre mayor a 3 caracteres.");
         }
     }
-
     private void validarEstado(EstadoMascota estado){
         if(estado == null){
             throw new IllegalArgumentException("Debe indicar un estado.");
         }
     }
-
     private void pesoVerificacion(Double peso) {
         if (peso == null || peso <= 0.0) {
             throw new IllegalArgumentException("El peso no puede ser 0 o menor a 0.");
         }
     }
-
     private void validarFechaNacimiento(LocalDate fechaNacimiento) {
         LocalDate fechaActual = LocalDate.now();
         //IMPORTANTE para sacar los años de un String luego de su Parse !!
@@ -44,8 +41,8 @@ public class Mascota {
             throw new IllegalArgumentException("La edad no puede ser 0 menor a 0.");
         }   
     }
-
     public Mascota(){}
+
     public Mascota(String id , String nombre, Double peso , LocalDate fechaNacimiento , EstadoMascota estado) {
         nombreVerificacion(nombre);
         pesoVerificacion(peso);
@@ -57,25 +54,19 @@ public class Mascota {
         this.fechaNacimiento = fechaNacimiento;
         this.estado = estado;
     }
-
     public void setId(String id) {
         this.id = id;
     }
-
     public String getId() {
         return this.id;
     }
-
-
     public void setNombre(String nombre) {
         nombreVerificacion(nombre);
         this.nombre = nombre;
     }
-
     public String getNombre() {
         return this.nombre;
     }
-
     public void setPeso(Double peso) {
         pesoVerificacion(peso);
         this.peso = peso;
@@ -83,16 +74,13 @@ public class Mascota {
     public Double getPeso() {
         return peso;
     }
-
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         validarFechaNacimiento(fechaNacimiento);
         this.fechaNacimiento = fechaNacimiento;
     }
-
     public LocalDate getFechaNacimiento() {
         return this.fechaNacimiento;
     }
-
     public void setEstado(EstadoMascota estado) {
         validarEstado(estado);
         this.estado = estado;
@@ -100,7 +88,7 @@ public class Mascota {
     public EstadoMascota getEstado() {
         return estado;
     }
-
+    
     @Override
     public String toString() {
         return "Id: " + id +" Nombre: " + getNombre() + "\n"
@@ -108,5 +96,4 @@ public class Mascota {
                         +" Fecha nacimiento: " + getFechaNacimiento() + "\n"
                         + "Estado actual: " + getEstado();
     }
-
 }

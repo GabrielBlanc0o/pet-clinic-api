@@ -30,11 +30,8 @@ No se almacenará la edad porque se puede calcular.
 
 ¿Por qué LocalDate es mejor que String?
 
-
-
 ## Dia 5
 
-
 ### ¿Por qué existe `main()`?
 
 Porque Java necesita un punto de entrada para iniciar la aplicación.
@@ -98,3 +95,8 @@ En el **IoC Container**, para reutilizarlos cuando otra clase los necesite.
 ### ¿Cómo crea un Service?
 
 Lee su constructor, identifica las dependencias, las busca en el contenedor y luego crea el objeto.
+
+
+### ¿Cómo se identifican las anotaciones en Spring?
+
+Gracias al IoC container, las identifica , las instancia y guarda sus referencias.

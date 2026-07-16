@@ -1,7 +1,12 @@
 package com.gabrielblanco.veterinaria.service;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.gabrielblanco.veterinaria.model.Mascota;
 import com.gabrielblanco.veterinaria.repository.MascotaRepository;
+@Service
 public class MascotaService {
     private MascotaRepository repository;
 
@@ -11,6 +16,10 @@ public class MascotaService {
 
     private Mascota obtenerMascota(String id) {
         return repository.buscarPorId(id);
+    }
+
+    public List<Mascota> obtenerTodas() {
+        return repository.obtenerTodas();
     }
 
     private void validarId(String id) {
@@ -32,7 +41,7 @@ public class MascotaService {
     private void validarMascotaNoExiste(String id) {
         if (obtenerMascota(id) != null) {
             throw new IllegalArgumentException(
-                "Error"
+                "Ya existe una mascota con el id: " + id
             );
         } 
     }
@@ -45,18 +54,18 @@ public class MascotaService {
     }
     
     public void registrarMascota(Mascota mascota) {
-        validarMascotaExiste(mascota.getId());
+        validarMascotaNoExiste(mascota.getId());
         repository.guardar(mascota);
     }
 
     public void actualizarMascota(Mascota mascota) {
-        validarMascotaNoExiste(mascota.getId());
+        validarMascotaExiste(mascota.getId());
         repository.actualizar(mascota);
     }
 
     public void eliminarMascota(String id) {
         validarId(id);
-        validarMascotaNoExiste(id);
+        validarMascotaExiste(id);
         repository.eliminar(id);
     }
 }
